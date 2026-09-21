@@ -1,0 +1,530 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Mahardika Abil Pratama</title>
+
+    <style>
+
+        /* Menghapus margin dan padding bawaan browser */
+        * {
+            margin: 0;
+            padding: 0;
+
+            /* Membuat ukuran elemen termasuk padding dan border */
+            box-sizing: border-box;
+        }
+
+        /* Mengatur tampilan utama halaman */
+        body {
+            /* Mengatur jenis font */
+            font-family: 'Segoe UI', Arial, sans-serif;
+
+            /* Mengatur warna background menggunakan HSL */
+            background-color: hsl(148, 85%, 42%);
+
+            /* Mengatur warna teks */
+            color: #333333;
+
+            /* Mengatur jarak antar baris teks */
+            line-height: 1.6;
+
+            /* Mengatur lebar maksimal halaman */
+            max-width: 800px;
+
+            /* Membuat halaman berada di tengah */
+            margin: 30px auto 0 auto;
+
+            /* Memberikan jarak kiri dan kanan */
+            padding: 0 15px;
+        }
+
+        /* Mengatur tampilan header dan section */
+        header,
+        section {
+            /* Memberikan warna putih pada card */
+            background: #ffffff;
+
+            /* Memberikan jarak isi dengan batas elemen */
+            padding: 25px;
+
+            /* Membuat sudut elemen menjadi melengkung */
+            border-radius: 10px;
+
+            /* Memberikan efek bayangan */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+            /* Memberikan jarak antar card */
+            margin-bottom: 20px;
+        }
+
+        /* Mengatur judul bagian */
+        h2 {
+            /* Mengatur warna judul */
+            color: #2c3e50;
+
+            /* Membuat garis di bawah judul */
+            border-bottom: 2px solid hsl(204, 70%, 53%);
+
+            /* Memberikan jarak antara teks dan garis */
+            padding-bottom: 5px;
+
+            /* Memberikan jarak bawah */
+            margin-bottom: 15px;
+
+            /* Mengatur ukuran font */
+            font-size: 1.3rem;
+        }
+
+        /* Mengatur bagian header menggunakan CSS Grid */
+        header {
+            /* Mengaktifkan CSS Grid */
+            display: grid;
+
+            /* Membuat dua kolom */
+            grid-template-columns: 130px 1fr;
+
+            /* Memberikan jarak antar kolom */
+            gap: 20px;
+
+            /* Membuat isi berada di tengah secara vertikal */
+            align-items: center;
+
+            /* Menjadi acuan untuk position absolute */
+            position: relative;
+        }
+
+        /* Mengatur foto profil */
+        header img {
+            /* Memberikan garis pada gambar */
+            border: 3px solid #3498db;
+
+            /* Membuat gambar berbentuk lingkaran */
+            border-radius: 50%;
+        }
+
+        /* Mengatur badge Open to Work */
+        .badge-status {
+            /* Membuat posisi badge menjadi absolute */
+            position: absolute;
+
+            /* Jarak dari bagian atas */
+            top: 15px;
+
+            /* Jarak dari bagian kanan */
+            right: 15px;
+
+            /* Mengatur warna background badge */
+            background-color: hsl(145, 63%, 42%);
+
+            /* Mengatur warna teks menjadi putih */
+            color: white;
+
+            /* Memberikan jarak dalam badge */
+            padding: 4px 10px;
+
+            /* Mengatur ukuran tulisan */
+            font-size: 0.75rem;
+
+            /* Membuat sudut badge melengkung */
+            border-radius: 20px;
+
+            /* Membuat tulisan menjadi tebal */
+            font-weight: bold;
+        }
+
+        /* Mengatur tampilan link */
+        a {
+            /* Mengatur warna link */
+            color: #3498db;
+
+            /* Menghilangkan garis bawah link */
+            text-decoration: none;
+
+            /* Membuat teks lebih tebal */
+            font-weight: 600;
+        }
+
+        /* Mengatur tampilan link ketika mouse diarahkan */
+        a:hover {
+            /* Menampilkan garis bawah */
+            text-decoration: underline;
+        }
+
+        /* Mengatur daftar keahlian */
+        .skills-grid {
+            /* Mengaktifkan CSS Grid */
+            display: grid;
+
+            /* Membuat tiga kolom dengan ukuran sama */
+            grid-template-columns: 1fr 1fr 1fr;
+
+            /* Memberikan jarak antar card */
+            gap: 15px;
+
+            /* Menghilangkan tanda bullet pada list */
+            list-style: none;
+        }
+
+        /* Mengatur card keahlian */
+        .skill-card {
+            /* Mengatur warna background */
+            background: #f8f9fa;
+
+            /* Memberikan jarak isi card */
+            padding: 15px;
+
+            /* Membuat sudut card melengkung */
+            border-radius: 8px;
+
+            /* Memberikan garis pada bagian kiri */
+            border-left: 4px solid #3498db;
+        }
+
+        /* Mengatur judul pada card keahlian */
+        .skill-card h3 {
+            /* Mengatur ukuran tulisan */
+            font-size: 1rem;
+
+            /* Mengatur warna tulisan */
+            color: #2c3e50;
+
+            /* Memberikan jarak bawah */
+            margin-bottom: 5px;
+        }
+
+        /* Menyembunyikan elemen menggunakan display none */
+        .aksesibilitas-tersembunyi {
+            display: none;
+        }
+
+        /* Menyembunyikan elemen tetapi tetap mempertahankan ruangnya */
+        .elemen-cadangan {
+            visibility: hidden;
+        }
+
+        /* Mengatur label pada form */
+        label {
+            /* Membuat label dapat mengatur width dan height */
+            display: inline-block;
+
+            /* Memberikan jarak bawah */
+            margin-bottom: 5px;
+
+            /* Membuat tulisan label menjadi tebal */
+            font-weight: 600;
+        }
+
+        /* Mengatur jarak kiri pada ordered list */
+        ol {
+            padding-left: 20px;
+        }
+
+        /* Mengatur jarak antar item list */
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Mengatur ukuran tabel */
+        table {
+            /* Membuat tabel memenuhi lebar container */
+            width: 100%;
+
+            /* Menggabungkan garis antar cell */
+            border-collapse: collapse;
+
+            /* Memberikan jarak bagian atas tabel */
+            margin-top: 10px;
+        }
+
+        /* Mengatur cell pada tabel */
+        th,
+        td {
+            /* Memberikan jarak dalam cell */
+            padding: 10px;
+
+            /* Membuat teks rata kiri */
+            text-align: left;
+
+            /* Memberikan garis bawah */
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* Mengatur bagian header tabel */
+        th {
+            /* Memberikan warna background */
+            background-color: #f8f9fa;
+
+            /* Mengatur warna teks */
+            color: #2c3e50;
+        }
+
+        /* Mengatur form menggunakan CSS Grid */
+        form {
+            /* Mengaktifkan CSS Grid */
+            display: grid;
+
+            /* Memberikan jarak antar elemen */
+            gap: 15px;
+        }
+
+        /* Mengatur baris pada form */
+        .form-row {
+            /* Mengaktifkan CSS Grid */
+            display: grid;
+
+            /* Membuat dua kolom */
+            grid-template-columns: 1fr 1fr;
+
+            /* Memberikan jarak antar kolom */
+            gap: 15px;
+        }
+
+        /* Mengatur input text, email dan textarea */
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            /* Membuat input memenuhi lebar container */
+            width: 100%;
+
+            /* Memberikan jarak bagian dalam */
+            padding: 10px;
+
+            /* Memberikan garis pada input */
+            border: 1px solid #cccccc;
+
+            /* Membuat sudut input melengkung */
+            border-radius: 5px;
+
+            /* Mengikuti font dari elemen induk */
+            font-family: inherit;
+        }
+
+        /* Mengatur input ketika sedang dipilih */
+        input:focus,
+        textarea:focus {
+            /* Menghilangkan outline bawaan browser */
+            outline: none;
+
+            /* Mengubah warna border menjadi biru */
+            border-color: #3498db;
+
+            /* Membuat border menjadi lebih tebal */
+            border: 2px solid #3498db;
+        }
+
+        /* Mengatur tampilan tombol */
+        button {
+            /* Mengatur warna background tombol */
+            background-color: #3498db;
+
+            /* Mengatur warna teks */
+            color: white;
+
+            /* Memberikan jarak dalam tombol */
+            padding: 10px 20px;
+
+            /* Menghilangkan border bawaan */
+            border: none;
+
+            /* Membuat sudut tombol melengkung */
+            border-radius: 5px;
+
+            /* Membuat teks menjadi tebal */
+            font-weight: bold;
+
+            /* Mengubah cursor menjadi pointer */
+            cursor: pointer;
+
+            /* Memberikan efek transisi */
+            transition: background 0.3s;
+
+            /* Membuat tombol berada di awal */
+            justify-self: start;
+
+            /* Membuat button menjadi inline-block */
+            display: inline-block;
+        }
+
+        /* Mengubah warna tombol ketika mouse diarahkan */
+        button:hover {
+            background-color: red;
+        }
+
+        /* Mengatur tampilan footer */
+        footer {
+            /* Membuat footer menggunakan posisi sticky */
+            position: sticky;
+
+            /* Menempel pada bagian bawah */
+            bottom: 0;
+
+            /* Mengatur urutan lapisan elemen */
+            z-index: 100;
+
+            /* Mengatur warna background footer */
+            background-color: #2c3e50;
+
+            /* Mengatur warna teks */
+            color: #ffffff;
+
+            /* Membuat teks berada di tengah */
+            text-align: center;
+
+            /* Mengatur ukuran font */
+            font-size: 0.9rem;
+
+            /* Memberikan jarak dalam */
+            padding: 15px;
+
+            /* Memberikan jarak bagian atas */
+            margin-top: 20px;
+
+            /* Membuat sudut atas footer melengkung */
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* Media Query untuk tampilan HP */
+        @media (max-width: 600px) {
+
+            /* Mengubah header menjadi satu kolom pada layar kecil */
+            header {
+                grid-template-columns: 1fr;
+
+                /* Membuat isi berada di tengah */
+                justify-items: center;
+
+                /* Membuat teks rata tengah */
+                text-align: center;
+            }
+
+            /* Mengubah skills menjadi satu kolom pada HP */
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Mengubah form menjadi satu kolom pada HP */
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="https://via.placeholder.com/130" alt="Foto Profil">
+
+        <div>
+            <h1>Mahardika Abil Pratama</h1>
+            <p>Pelajar | Web Developer Pemula</p>
+            <p>Email: <a href="mailto:">abilpratamamahardika@gmail.com/a></p>
+            <p>Instagram: <a href="#">@Mahardika_abil18</a></p>
+        </div>
+
+        <span class="badge-status">Open to Work</span>
+    </header>
+
+    <section>
+        <h2>Profil</h2>
+        <p>
+            Saya adalah seorang pelajar yang tertarik pada bidang
+            pemrograman, desain website, dan teknologi informasi.
+            Saya sedang mempelajari HTML, CSS, dan dasar-dasar
+            pengembangan website.
+        </p>
+    </section>
+
+    <section>
+        <h2>Keahlian</h2>
+
+        <ul class="skills-grid">
+            <li class="skill-card">
+                <h3>HTML</h3>
+                <p>Membuat struktur dasar website.</p>
+            </li>
+
+            <li class="skill-card">
+                <h3>CSS</h3>
+                <p>Mengatur tampilan dan desain website.</p>
+            </li>
+
+            <li class="skill-card">
+                <h3>JavaScript</h3>
+                <p>Membuat website menjadi interaktif.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Pendidikan</h2>
+
+        <ol>
+            <li>SMK - Rekayasa Perangkat Lunak</li>
+            <li>SMP - Pendidikan Menengah Pertama</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Pengalaman</h2>
+
+        <table>
+            <tr>
+                <th>Tahun</th>
+                <th>Kegiatan</th>
+                <th>Keterangan</th>
+            </tr>
+
+            <tr>
+                <td>2025</td>
+                <td>Project Website</td>
+                <td>Membuat website sederhana</td>
+            </tr>
+
+            <tr>
+                <td>2026</td>
+                <td>Project Sekolah</td>
+                <td>Membuat aplikasi sederhana</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Kontak</h2>
+
+        <form>
+
+            <div class="form-row">
+
+                <div>
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" placeholder="Masukkan nama">
+                </div>
+
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Masukkan email">
+                </div>
+
+            </div>
+
+            <div>
+                <label for="pesan">Pesan</label>
+                <textarea id="pesan" rows="5" placeholder="Tulis pesan..."></textarea>
+            </div>
+
+            <button type="submit">Kirim</button>
+
+        </form>
+    </section>
+
+    <footer>
+        &copy; 2026 Mahardika Abil Pratama - Curriculum Vitae
+    </footer>
+
+</body>
+</html>
